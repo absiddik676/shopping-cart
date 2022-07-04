@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section id="deletess">
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minusButton1" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="plusButtonValue1" type="text" class="form-control text-center" value='1'>
+                           <button id="plusButton1" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="curranPricePhone">1219</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minusButton2" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="plusButtonValue2" type="text" class="form-control text-center" value="1">
+                           <button id="plusButton2" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="curranPriceCase">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="Subtotal">1,278</span></h5>
+                        <h5>$0</h5>
+                        <h5>$ <span id="Total">1,278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button id="checkOut" type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class="tank" id="thanks">
+      <h1>Thanks Everyone</h1>
+   </div>
+
+   <script>
+                     //  phone + button   
+      var phonePushButton= document.getElementById("plusButton1");
+       phonePushButton.addEventListener('click',function(){ 
+         productCouunt1(true)
+
+            //total price phone
+         var curranPrice=document.getElementById('curranPricePhone').innerText
+         var curranPriceChangeNumbe=parseFloat(curranPrice)
+         var total = curranPriceChangeNumbe+1219
+         curranPrice=document.getElementById('curranPricePhone').innerText=total;
+         
+         // phone Subtotal price
+         var Subtotal = document.getElementById('Subtotal').innerText;
+         var SubtotalChageNumber=parseFloat(Subtotal)
+         var Subtotals=SubtotalChageNumber+total;
+         console.log(Subtotals)
+         document.getElementById('Subtotal').innerText=Subtotals;
+                                 //total parice
+         var totalAmount=  document.getElementById('Total').innerText
+        var totalAmountNumberChange=parseFloat(totalAmount)
+        document.getElementById('Total').innerText=Subtotals;
+         
+      })
+                      // phone -  button
+                      phonePushButton= document.getElementById("minusButton1");
+         phonePushButton.addEventListener('click',function(){ 
+            productCouunt1(false)
+            // total price theke koombe - button a click  korle
+            var curranPrice=document.getElementById('curranPricePhone').innerText
+         var curranPriceChangeNumbe=parseFloat(curranPrice)
+         var total = curranPriceChangeNumbe-1219
+         curranPrice=document.getElementById('curranPricePhone').innerText=total;
+         }) 
+                             //1 phone (+ -) button fuction
+          function productCouunt1 (product){
+         var phonePushButtonValue = document.getElementById('plusButtonValue1').value;
+         var phonePushButtonValueChange= Number(phonePushButtonValue);
+         // var totalPhone = phonePushButtonValueChange+1;
+         let totalPhone=phonePushButtonValueChange;
+         if(product==true){
+            totalPhone = phonePushButtonValueChange+1
+         }
+         if(product==false && phonePushButtonValueChange >0){
+            totalPhone = phonePushButtonValueChange-1
+         }
+
+         document.getElementById('plusButtonValue1').value=totalPhone;
+         }
+                    //  Case + button
+      var phonePushButton= document.getElementById("plusButton2");
+       phonePushButton.addEventListener('click',function(){ 
+        productCouunt2(true)
+         
+       
+
+        // total price case 
+        var curranPrice=document.getElementById('curranPriceCase').innerText
+         var curranPriceChangeNumbe=parseFloat(curranPrice)
+         var total = curranPriceChangeNumbe+59
+         curranPrice=document.getElementById('curranPriceCase').innerText=total;
+
+           // case Subtotal price
+           var Subtotal = document.getElementById('Subtotal').innerText;
+         var SubtotalChageNumber=parseFloat(Subtotal)
+         var Subtotals=SubtotalChageNumber+total;
+         document.getElementById('Subtotal').innerText=Subtotals;
+
+                              // total price
+         var totalAmount=  document.getElementById('Total').innerText
+        var totalAmountNumberChange=parseFloat(totalAmount)
+        document.getElementById('Total').innerText=Subtotals;
+      })          
+         //  Case - button
+         phonePushButton= document.getElementById("minusButton2" );
+         phonePushButton.addEventListener('click',function(){ 
+           productCouunt2(false)
+
+           // total price theke koombe - button a click  korle
+           var curranPrice=document.getElementById('curranPriceCase').innerText
+         var curranPriceChangeNumbe=parseFloat(curranPrice)
+         var total = curranPriceChangeNumbe-59 
+         curranPrice=document.getElementById('curranPriceCase').innerText=total;
+         }) 
+         
+                 // Case (+ - ) button fuction
+           function productCouunt2(product2){
+            var phonePushButtonValue = document.getElementById('plusButtonValue2').value;
+            var phonePushButtonValueChange= Number(phonePushButtonValue);
+            // var totalPhone = phonePushButtonValueChange-1;
+            totalPhone=phonePushButtonValueChange;
+            if(product2==true){
+               totalPhone=phonePushButtonValueChange+1;
+            }
+            if(product2==false && phonePushButtonValueChange >0){
+               totalPhone=phonePushButtonValueChange-1;
+            }
+            document.getElementById('plusButtonValue2').value=totalPhone;
+           }
+           var checkOuts=document.getElementById('checkOut');
+          checkOuts.addEventListener('click',function(){
+            var deletes= document.getElementById('deletess')
+            deletes.style.display="none";
+            var open=  document.getElementById('thanks')
+            open.style.display='block'
+          })
+        
+   </script>
+</body>
+
+</html>
